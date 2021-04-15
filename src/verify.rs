@@ -7,6 +7,9 @@ pub fn verify<'a>(
 ) -> Result<(), &'a Exercise> {
     for exercise in start_at {
         let compile_result = compile_and_run_interactively(&exercise);
+        if !compile_result.unwrap_or(false) {
+            return Err(exercise);
+        }
     }
     Ok(())
 }

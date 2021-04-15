@@ -30,34 +30,34 @@ fn main() {
         .arg(
             Arg::with_name("nocapture")
                 .long("nocapture")
-                .help("Show outputs from the test exercises")
+                .help("输出所测试练习的输出.(读起来有点绕, 不过你应该懂我意思吧?)")
         )
         .subcommand(
             SubCommand::with_name("verify")
                 .alias("v")
-                .about("Verifies all exercises according to the recommended order")
+                .about("按照推荐顺序检验所有的练习")
         )
         .subcommand(
             SubCommand::with_name("watch")
                 .alias("w")
-                .about("Reruns `verify` when files were edited")
+                .about("每当当前练习文件被修改, 就会自动检验")
         )
         .subcommand(
             SubCommand::with_name("run")
                 .alias("r")
-                .about("Runs/Tests a single exercise")
+                .about("运行单个练习文件")
                 .arg(Arg::with_name("name").required(true).index(1)),
         )
         .subcommand(
             SubCommand::with_name("hint")
                 .alias("h")
-                .about("Returns a hint for the current exercise")
+                .about("给出当前练习的提示")
                 .arg(Arg::with_name("name").required(true).index(1)),
         )
         .subcommand(
             SubCommand::with_name("list")
                 .alias("l")
-                .about("Lists the exercises available in rustlings")
+                .about("列出当前所有的练习")
         )
         .get_matches();
     
@@ -93,7 +93,6 @@ fn main() {
 
     let toml_str = &fs::read_to_string("info.toml").unwrap();
     let exercises = toml::from_str::<ExerciseList>(toml_str).unwrap().exercises;
-    let verbose = matches.is_present("nocapture");
 
     if matches.subcommand_matches("list").is_some() {
         exercises.iter().for_each(|e| println!("{}", e.name));
@@ -104,7 +103,7 @@ fn main() {
         let matching_exercise = |e: &&Exercise| name == e.name;
 
         let exercise = exercises.iter().find(matching_exercise).unwrap_or_else(|| {
-            println!("No exercise found for your given name!");
+            println!("没找到这个练习! 看看是不是输错名字了!");
             std::process::exit(1)
         });
 
@@ -130,7 +129,7 @@ fn main() {
     }
 
     if matches.subcommand_matches("watch").is_some() {
-        if let Err(e) = watch(&exercises, verbose) {
+        if let Err(e) = watch(&exercises) {
             println!("Error: 无法监视你的程序. 错误信息: {:?}.", e);
             println!("很可能是因为你磁盘内存满了 或者 你的 'inotify limit' 达到了上限.");
             std::process::exit(1);
@@ -193,7 +192,7 @@ fn main() {
 
 fn spawn_watch_shell(failed_exercise_hint: &Arc<Mutex<Option<String>>>) {
     let failed_exercise_hint = Arc::clone(failed_exercise_hint);
-    println!("输入 'hint' 查看提示 或者 输入 'clear' 清屏");
+    println!("输入 'hint' 查看提示 输入 'clear' 清屏 输入 'quit' 退出练习");
     thread::spawn(move || loop {
         let mut input = String::new();
         match io::stdin().read_line(&mut input) {
@@ -205,6 +204,9 @@ fn spawn_watch_shell(failed_exercise_hint: &Arc<Mutex<Option<String>>>) {
                     }
                 } else if input.eq("clear") {
                     println!("\x1B[2J\x1B[1;1H");
+                } else if input.eq("quit") {
+                    println!("希望你继续坚持鸭, 骚年！");
+                    std::process::exit(0);
                 } else {
                     println!("unknown command: {}", input);
                 }
@@ -214,7 +216,7 @@ fn spawn_watch_shell(failed_exercise_hint: &Arc<Mutex<Option<String>>>) {
     });
 }
 
-fn watch(exercises: &[Exercise], verbose: bool) -> notify::Result<()> {
+fn watch(exercises: &[Exercise]) -> notify::Result<()> {
     /* Clears the terminal with an ANSI escape code.
     Works in UNIX and newer Windows terminals. */
     fn clear_screen() {
