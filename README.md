@@ -38,7 +38,7 @@ Hint: 你好世界！！！
 """
 ```
 # 如何编译 CLearning
-## 安装 rust 编辑器
+## 安装 rust 编译器
 ```
 rust官网 https://www.rust-lang.org/learn/get-started
 ```
