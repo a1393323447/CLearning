@@ -1,0 +1,24 @@
+欢迎来到 Clearning!
+
+第一次使用Clearning? 别慌! Clearning 是专门为了C语言初学者制作的。 我会教会你
+一些C语言的基础语法。但在开始之前, 请先仔细阅读下面关于Cleraning操作的说明:
+
+1. Clearning 的核心目的是为了让你通过练习熟悉C语言的语法. 这些练习主要包含
+   一些导致无法通过编译的语法错误. 少数练习包含一些逻辑错误. 无论是那一种错
+   误, 你的任务都是改正它, 并且达到每一个练习文件中预设的目标.
+   当你修改并保存练习文件时, Clearning 会自动将其编译, 如果通过编译, 那么只要
+   你将"I AM NOT DONE"那一行删掉, Clearning 就会自动进行下一个练习.
+
+2. 如果你使用 watch 模式 运行 Clearning(我推荐这个模式), Clearning 就会自动开
+   始进行第一个练习. 当你开始运行的时候, 不要被一大堆报错吓到. 这些就是你要解
+   决的错误. 打开你的 IDE 开始 debug 之旅吧~
+
+3. 如果你卡在某一个练习, 可以输入'hint' (在 'watch' 模式时), 或者输入命令'rustlings
+    hint myexercise' 获取提示.
+
+4. 如果你觉得练习题有错误, 你可以在 github 上提交 issue.
+   (https://github.com/rust-lang/rustlings/issues/new). 我会认真查看每一个 issue,
+   我也很鼓励你和其他初学者互相帮助, 互相解答!
+
+准备好了吗? 准备好之后, 输入`.\cleaning watch`, 开始在C语言的世界中策马奔腾(手动
+滑稽), 记得打开你的 IDE !
