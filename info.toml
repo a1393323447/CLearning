@@ -1,0 +1,9 @@
+# VARIABLES
+
+[[exercises]]
+name = "HelloWorld"
+path = "exercises/HelloWorld.c"
+hint = """
+Hint: 你好世界！！！
+"""
+
