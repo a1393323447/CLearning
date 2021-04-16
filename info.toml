@@ -4,8 +4,7 @@
 name = "main函数"
 path = "exercises/C程序基础结构/main函数.c"
 hint = """
-Hint: 提示一: 跟我读: "main   m  a  i  n"
-      提示二: 英   文 分号!!!!!!!!!!!
+Hint: 跟我读: "main   m  a  i  n"
 """
 
 [[exercises]]
