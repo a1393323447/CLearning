@@ -4,26 +4,37 @@
 name = "main函数"
 path = "exercises/C程序基础结构/main函数.c"
 hint = """
-Hint: 提示一: 跟我读: "main   m  a  i  n"
-      提示二: 英   文 分号!!!!!!!!!!!
+Hint: 跟我读: "main   m  a  i  n"
 """
 
 [[exercises]]
-name = "作用域"
-path = "exercises/C程序基础结构/作用域.c"
+name = "int01"
+path = "exercises/类型系统/基础类型/整型/int01.c"
 hint = """
-Hint: 大括号要成对
+Hint: 对照着给出的例子写就行, 但要注意, 不要和例子完全一样！
+      这样会导致重复定义的错误。
 """
 
 [[exercises]]
-name = "作用域"
-path = "exercises/变量和常量/标识符.c"
+name = "基础类型变量声明01"
+path = "exercises/C程序基础结构/声明/基础类型变量声明01.c"
 hint = """
-Hint: 一：参照标识符的规则, 3a %a -a 都是不合法的, 其实也很容易想明白, 3a会引起歧义
+Hint: 一、记得在使用变量之前, 先将变量初始化
+      二、试着定义并初始化变量a, b, c
+"""
+
+[[exercises]]
+name = "标识符"
+path = "exercises/C程序基础结构/声明/标识符.c"
+hint = """
+Hint: 一、参照标识符的规则, 3a %a -a 都是不合法的, 其实也很容易想明白, 3a会引起歧义
       % 和 - 都是一个运算符, 因此 %a -a 也会引起歧义 (例如: b + (-a) 的时候, 编
       译器就没办法知道加的 -a 是一个叫做 "-a" 的变量, 还是 负a 了。)
-      二：C语言是对大小写敏感的, b 和 B 不是同一个标识符
 
+      二：C语言是对大小写敏感的, b 和 B 不是同一个标识符
+"""
+
+[[exercises]]
 name = "综合练习1"
 path = "exercises/C程序基础结构/exam.c"
 hint = """
