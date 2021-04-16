@@ -11,9 +11,13 @@
 // 练习: 填补并改正下面的代码, 使得文件通过编译
 // 在终端输入 hint 获取提示 
 
+// 注解: printf 是一个定义在头文件 stdio.h 中的函数, 它的作用是将参数按照格式化字符串对应地输出到控制台中.
+//       暂时不用深究
+
 // I AM NOT DONE
 
 #include <stdio.h>
+#include <assert.h>
 
 int main() {
 
@@ -29,5 +33,8 @@ int main() {
     int b = 2;
     printf("b = %d", B);
 
+    // 不要更改下面的代码
+    assert(a_2 == 2);
+    assert(a_3 == 3);
     return 0;
 }
