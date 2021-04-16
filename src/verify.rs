@@ -8,6 +8,7 @@ pub fn verify<'a>(
     for exercise in start_at {
         let compile_result = compile_and_run_interactively(&exercise);
         if !compile_result.unwrap_or(false) {
+            println!("练习文件的路径: {:?}\n", exercise.path);
             return Err(exercise);
         }
     }
