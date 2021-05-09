@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+// 一直以来，我们都没有仔细地了解 printf 的作用
+// 现在请结合实例中的注释和程序的输出, 初步了解 printf 函数的功能
+
 // I AM NOT DONE
 
 int main() {
